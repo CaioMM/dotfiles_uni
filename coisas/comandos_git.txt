@@ -1,0 +1,303 @@
+Para meu uso, é MINHA transcrição da aula de git
+
+Curso de Git para iniciantes RBTECH
+
+Aula 1
+##############################################
+#primeira configuração
+git config --global user.name "nome"
+#segunda configuração
+git config --global user.email "email@com"
+
+
+#criar um repositorio GIT na pasta atual
+#entrar na pasta e digitar
+git init
+
+#para saber qual o STAUS do repositório
+git status
+
+
+#para começar a rastrear os arquivos no GIT
+git add nome_arquivo
+
+#para o GIT ignorar os arquivos, deve-se criar um arquivo
+chamado .gitignore e dentro dele, escrever na primeira linha
+.gitignore e em cada linha o nome dos arquivos e pastas que 
+que devem ser ignoradas. para ignorar uma pasta escrever nomepasta/
+
+
+Aula 2
+###########################################################
+Forma básica de uso do GIT
+
+Depois de iniciado um repositório GIT
+
+Edita-se o arquivo e salva-o. Nesse momento o arquivo está em
+working area.
+
+git add nomearquivo
+
+faz com que o arquivo fique em staged area, fica pronto para 
+ser enviado para o servidor.
+
+git commit -m "mensagem de log"
+
+envia para o servidor
+
+###########################################################
+
+
+
+Aula 3
+###########################################################
+Forma de visualizar as modificações nos arquivos usando GIT
+
+Para saber o que foi modificado entre a versão atual e a que está 
+no working directory, usar o comando
+
+git diff nomearquivo
+
+
+Para saber o que foi modificado entre a versão atual e o que está
+na Staged Area, usar o comando
+
+git diff --staged
+
+
+
+Para visualizar todos os log dos commit realizados no projeto,
+vai ser listado desde o primeiro até o último.
+
+git log
+
+git log -p
+
+
+Aula 4
+###################################################################
+Reverter alguma modificação 
+
+
+
+Mostra somente o código de cada commit
+
+git log --pretty=oneline
+
+
+Como juntar os arquivos em um unico commit, caso tenha realizado um commit errado
+
+
+primeiramente adicionar os arquivos que estão faltando
+
+git add .
+
+depois fazer o commit
+
+git commit --amend -m "cometario"
+
+Com isso não são criados dois commits
+É útil caso alguma modificação seja esquecida
+
+
+Como remover um arquivo da Staged Area (depois de git add) 
+
+git reset HEAD nomearquivo
+
+
+
+
+Aula 5
+##############################################################
+TAGs e Branchs
+
+
+para listar as TAG criadas
+util para identificar versões de um software ver 1 ver 2...
+
+git tag
+
+Para criar uma TAG, com a versão atual do projeto
+
+git tag -a nometag
+
+Para criar uma TAG, com uma versão antiga do projeto
+Deve-se listar os log anteriores para visualizar as chaves de 
+geradas pelos commits anteriores
+
+git log --pretty=oneline
+
+Despois copiar a chave desejada
+
+git tag -a nometag chavedocommit -m "mensagem"
+
+Para mostra mais informações sobre uma determinada TAG
+
+git show nometag
+
+Para utilizar uma tag
+
+git checkout nometag
+
+
+Para voltar para branch master
+
+
+git checkout master
+
+Para apagar tag
+
+git tag -d nometag
+
+
+Para criar ambientes de desenvolvimento é interessante criar Branchs
+Criando ramificações dentro do controle de versão
+É útil para criar ambientes de teste para o sistema
+Cada branch pode ser um teste diferente
+Nesse caso o usuario pode faze modificações, sem modificar o branch MASTER
+
+Para criar um branch
+
+git branch nomebranch
+
+Depois de criar um branch é necessario mudar de branch,
+
+Para mudar de Working Directory
+
+git checkout teste
+
+É possivel criar um branch e ao mesmo tempo mudar o Working Directory
+
+git checkout -b nomebranch
+
+
+Para trazer as modificações feitas em branch de teste para o branch MASTER
+é necessário fazer um MERGE
+Sempre deve se estar no destino das alterações
+
+git merge nomebranch
+
+Para remover um branch
+
+git branch -d nomebranch
+
+
+Para listar todos os Branchs
+
+git branch
+
+
+AULA 6
+
+################################################################
+git em servidor local
+
+Caso mais simples o servidor deve ter uma pasta compartilhada pela rede
+Também o servidor deve ter o git instalado
+
+
+dentro da pasta compartilhada, roda o seguinte comando
+
+git init --bare
+
+
+Na maquina cliente
+
+
+git clone file:////caminhodapasta nomepasta 
+
+
+Usando o comando git commit este é realizado somente na maquina local, mas é necessário fazer 
+Depois de realizar o commit, pode ser enviado para o servido os arquivos usando 
+
+
+git push
+
+
+Mas é necessário saber o servidor, por padrão é origin
+
+git remote
+
+o padrão retorna:
+
+ origin
+
+O nome retornado dever usado no seguinte comando
+
+
+git push nomeservidogit  nomebranch
+
+exemplo
+
+git push origin master
+
+o nomebranch pode ser o master????
+
+
+
+Muitas vezes uma modificação é realizada em treços dos códigos, e os outros 
+desenvolvedores precisam atualizar seus códigos, nesse caso deve-se fazer o pull
+Usado para baixar do servidor
+
+
+git pull nomeservidogit nomebranch
+
+exemplo
+git pull origin master
+
+
+Aula 7
+##########################################
+Integrando git e github
+
+
+
+primeiramente é necessario fornecer o acesso do meu computador com o site github
+
+pode ser feito usando uma chave SSH de autenticação
+
+Para forncecer o acesso primeiramente deve-se gerar um par de chaves SSH
+com o seguinte comando
+
+ssh-keygen
+
+pode somente dar enter varias vezes, mas é possível cria uma senha para o 
+uso da chave, nesse caso todas as vezes será pedido a senha para realizar opereções 
+no repositorio
+
+Após finalizar esse passo serão geradas uma par de arquivos, o caminho dos arquivos 
+é mostrado.
+
+Agora deve-se abrir o arquivo id_rsa.pub como texto
+O código dentro desse arquivo deve ser copiado para o GitHub
+
+	No GitHub -> acountsettings -> ssh keys -> add ssh keygen
+	Dentro da caixa de texto "key" deve-se colar a chave gerada no computador
+	
+Como neste tipo de configuração foi utilizado autenticação SSH, então no site deve-se 
+utiliza o endereço SSH
+
+Depois é só clonar o diretorio
+
+git clone git@github.com:meurepogit/pasta.git
+
+O resto é igual, ao explicado anteriormente.
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
