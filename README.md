@@ -6,6 +6,7 @@ Instalação
 
 Faça uma copia de segurança de /home/usuario
 
+
 principalmente de:
 
 .bash_login
@@ -17,9 +18,12 @@ principalmente de:
 
 Depois copie os novos arquivos para /home/usuario
 
+
 Pequenas modificações foram feitas, mas foi baseado
 no dotfiles-universal.
+
 
 Atenção
 =======
 Para meu uso próprio, não me responsabilizo por uso indevido.
+
