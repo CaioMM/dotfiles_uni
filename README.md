@@ -4,7 +4,7 @@
 Instalação
 ==========
 
-Faça uma copia de segurança de /home/-usario-
+Faça uma copia de segurança de /home/usuario
 
 principalmente de:
 
@@ -15,7 +15,7 @@ principalmente de:
 .inputrc
 .profile
 
-Depois copie os novos arquivos para /home/-usuario-
+Depois copie os novos arquivos para /home/usuario
 
 Pequenas modificações foram feitas, mas foi baseado
 no dotfiles-universal.
